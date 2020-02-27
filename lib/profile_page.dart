@@ -1,7 +1,9 @@
 import 'package:abd_portfolio/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'components/navbutton.dart';
+import 'components/nav_button.dart';
+import 'components/nav_header.dart';
+import 'components/profile_info.dart';
 
 class ProfilePage extends StatelessWidget {
   List<Widget> navButtons() => [
@@ -31,6 +33,11 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       largeScreen: Scaffold(
+        appBar: ResponsiveWidget.isSmallScreen(context)
+            ? AppBar(
+                elevation: 0.0,
+              )
+            : null,
         drawer: ResponsiveWidget.isSmallScreen(context)
             ? Drawer(
                 child: ListView(
@@ -41,9 +48,31 @@ class ProfilePage extends StatelessWidget {
             : null,
         body: SingleChildScrollView(
           child: AnimatedPadding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.1),
+            padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.025),
             duration: Duration(seconds: 1),
-            child: ResponsiveWidget(largeScreen: Column()),
+            child: ResponsiveWidget(
+              largeScreen: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    child: ResponsiveWidget.isLargeScreen(context)
+                        ? Column(
+                            children: <Widget>[
+                              NavHeader(
+                                navButtons: navButtons(),
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.025,
+                              ),
+                            ],
+                          )
+                        : null,
+                  ),
+                  ProfileInfo(),
+                ],
+              ),
+            ),
           ),
         ),
       ),
