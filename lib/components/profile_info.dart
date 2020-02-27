@@ -30,7 +30,7 @@ class ProfileInfo extends StatelessWidget {
         Text(
           'Abdullah Deshmukh',
           style: TextStyle(
-            // fontFamily: 'GoogleSansMedium',
+            letterSpacing: 2.0,
             fontSize: 40.0,
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -60,9 +60,7 @@ class ProfileInfo extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 kAboutText,
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
+                style: kBodyTextStyle,
               ),
             ),
           ),
@@ -72,9 +70,7 @@ class ProfileInfo extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 kAboutText,
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
+                style: kBodyTextStyle,
               ),
             ),
           ),

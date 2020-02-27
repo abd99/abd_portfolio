@@ -1,6 +1,7 @@
 import 'package:abd_portfolio/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'components/education_info.dart';
 import 'components/nav_button.dart';
 import 'components/nav_header.dart';
 import 'components/profile_info.dart';
@@ -70,6 +71,7 @@ class ProfilePage extends StatelessWidget {
                         : null,
                   ),
                   ProfileInfo(),
+                  EducationInfo(),
                 ],
               ),
             ),
