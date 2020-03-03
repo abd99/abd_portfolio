@@ -23,3 +23,8 @@ const kBodyTextStyle = TextStyle(
   fontSize: 18.0,
   height: 1.5,
 );
+
+const kLabelTextStyle = TextStyle(
+  fontSize: 18.0,
+  color: Color(0xFF8D8E98),
+);
