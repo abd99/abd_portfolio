@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
 import 'reusable_card.dart';
 import 'skill_card.dart';
+import 'skill_category_card.dart';
 
 class SkillsInfo extends StatelessWidget {
   final List<Widget> languageSkillCards = [
@@ -42,6 +43,10 @@ class SkillsInfo extends StatelessWidget {
     SkillCard(
       label: 'XML',
       icon: FontAwesomeIcons.code,
+    ),
+    SkillCard(
+      label: 'SQL',
+      icon: FontAwesomeIcons.database,
     ),
   ];
 
@@ -90,60 +95,14 @@ class SkillsInfo extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.05),
-              child: ReusableCard(
-                customColor: kActiveCardColor,
-                cardChild: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).size.height * 0.025),
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(
-                              MediaQuery.of(context).size.height * 0.025),
-                          child: Text(
-                            'Languages',
-                            style: kSecondaryTitleTextStyle,
-                          ),
-                        ),
-                        Wrap(
-                          alignment: WrapAlignment.center,
-                          direction: Axis.horizontal,
-                          children: languageSkillCards,
-                        ),
-                      ],
-                    )),
-              ),
+            SkillCategoryCard(
+              categoryTitle: 'Languages',
+              cardsList: languageSkillCards,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.05),
-              child: ReusableCard(
-                customColor: kActiveCardColor,
-                cardChild: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).size.height * 0.025),
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(
-                              MediaQuery.of(context).size.height * 0.025),
-                          child: Text(
-                            'Technologies/Frameworks',
-                            style: kSecondaryTitleTextStyle,
-                          ),
-                        ),
-                        Wrap(
-                          alignment: WrapAlignment.center,
-                          direction: Axis.horizontal,
-                          children: technologiesSkillCards,
-                        ),
-                      ],
-                    )),
-              ),
-            ),
+            SkillCategoryCard(
+              categoryTitle: 'Technologies/Frameworks',
+              cardsList: technologiesSkillCards,
+            )
           ],
         ),
       ),
