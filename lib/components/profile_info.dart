@@ -16,7 +16,7 @@ class ProfileInfo extends StatelessWidget {
           color: kButtonColor,
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: AssetImage("abd_profile.jpeg"),
+            image: AssetImage("images/abd_profile.jpeg"),
             alignment: Alignment.center,
             fit: BoxFit.cover,
           ),
@@ -35,6 +35,7 @@ class ProfileInfo extends StatelessWidget {
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
         Text(
           'Mobile Developer',
