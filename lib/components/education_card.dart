@@ -18,7 +18,7 @@ class EducationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(32.0),
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[

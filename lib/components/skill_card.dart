@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
 import 'icon_content.dart';
-import 'reusable_card.dart';
 
 class SkillCard extends StatelessWidget {
   final String label;
@@ -12,13 +10,9 @@ class SkillCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ReusableCard(
-      onPress: () {},
-      customColor: kActiveCardColor,
-      cardChild: IconContent(
-        icon: icon,
-        label: label,
-      ),
+    return IconContent(
+      icon: icon,
+      label: label,
     );
   }
 }

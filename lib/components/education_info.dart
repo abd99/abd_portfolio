@@ -50,18 +50,22 @@ class EducationInfo extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            ResponsiveWidget(
-              largeScreen: Wrap(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                direction: Axis.horizontal,
-                alignment: WrapAlignment.center,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.05),
+              child: ResponsiveWidget(
+                largeScreen: Wrap(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  direction: Axis.horizontal,
+                  alignment: WrapAlignment.center,
 
-                children: educationCards,
-              ),
-              smallScreen: Wrap(
-                alignment: WrapAlignment.center,
-                direction: Axis.horizontal,
-                children: educationCards,
+                  children: educationCards,
+                ),
+                smallScreen: Wrap(
+                  alignment: WrapAlignment.center,
+                  direction: Axis.horizontal,
+                  children: educationCards,
+                ),
               ),
             )
           ],
