@@ -73,6 +73,36 @@ class SkillsInfo extends StatelessWidget {
     ),
   ];
 
+  final List<Widget> dbSkillCards = [
+    SkillCard(
+      label: 'MySQL',
+      icon: FontAwesomeIcons.database,
+    ),
+    SkillCard(
+      label: 'Firebase',
+      icon: FontAwesomeIcons.fire,
+    ),
+    SkillCard(
+      label: 'MongoDB',
+      icon: FontAwesomeIcons.database,
+    ),
+  ];
+
+  final List<Widget> toolsSkillCards = [
+    SkillCard(
+      label: 'Git',
+      icon: FontAwesomeIcons.git,
+    ),
+    SkillCard(
+      label: 'GitHub',
+      icon: FontAwesomeIcons.github,
+    ),
+    SkillCard(
+      label: 'Firebase',
+      icon: FontAwesomeIcons.fire,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return ReusableCard(
@@ -102,7 +132,15 @@ class SkillsInfo extends StatelessWidget {
             SkillCategoryCard(
               categoryTitle: 'Technologies/Frameworks',
               cardsList: technologiesSkillCards,
-            )
+            ),
+            SkillCategoryCard(
+              categoryTitle: 'Databases',
+              cardsList: dbSkillCards,
+            ),
+            SkillCategoryCard(
+              categoryTitle: 'Tools',
+              cardsList: toolsSkillCards,
+            ),
           ],
         ),
       ),

@@ -6,8 +6,8 @@ import 'reusable_card.dart';
 class SkillCategoryCard extends StatelessWidget {
   const SkillCategoryCard({
     Key key,
-    @required this.cardsList,
     @required this.categoryTitle,
+    @required this.cardsList,
   }) : super(key: key);
 
   final List<Widget> cardsList;

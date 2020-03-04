@@ -27,15 +27,19 @@ class ProfileInfo extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.05,
         ),
-        Text(
-          'Abdullah Deshmukh',
-          style: TextStyle(
-            letterSpacing: 2.0,
-            fontSize: 40.0,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32.0),
+          child: Text(
+            'Abdullah Deshmukh',
+            style: TextStyle(
+              letterSpacing: 2.0,
+              fontSize: 40.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+            maxLines: 2,
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
         Text(
           'Mobile Developer',
