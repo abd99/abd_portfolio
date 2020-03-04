@@ -8,26 +8,22 @@ import 'reusable_card.dart';
 
 class EducationInfo extends StatelessWidget {
   final List<Widget> educationCards = [
-    Expanded(
-      child: ReusableCard(
-        customColor: kActiveCardColor,
-        cardChild: EducationCard(
-          collegeName: 'Zeal College of Engineering\, Pune',
-          universityName: 'Savitribai Phule Pune University',
-          year: '2018 - Present',
-          courseName: 'BE in Computer Engineering',
-        ),
+    ReusableCard(
+      customColor: kActiveCardColor,
+      cardChild: EducationCard(
+        collegeName: 'Zeal College of Engineering\, Pune',
+        universityName: 'Savitribai Phule Pune University',
+        year: '2018 - Present',
+        courseName: 'BE in Computer Engineering',
       ),
     ),
-    Expanded(
-      child: ReusableCard(
-        customColor: kActiveCardColor,
-        cardChild: EducationCard(
-          collegeName: 'MIT Polytechnic\, Pune',
-          universityName: 'Maharashtra State Board of Technical Education',
-          year: '2015 - 2018',
-          courseName: 'Diploma in Computer Engineering',
-        ),
+    ReusableCard(
+      customColor: kActiveCardColor,
+      cardChild: EducationCard(
+        collegeName: 'MIT Polytechnic\, Pune',
+        universityName: 'Maharashtra State Board of Technical Education',
+        year: '2015 - 2018',
+        courseName: 'Diploma in Computer Engineering',
       ),
     ),
   ];
@@ -55,13 +51,16 @@ class EducationInfo extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.05,
             ),
             ResponsiveWidget(
-              largeScreen: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              largeScreen: Wrap(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.center,
+
                 children: educationCards,
               ),
               smallScreen: Wrap(
-                runAlignment: WrapAlignment.center,
-                direction: Axis.vertical,
+                alignment: WrapAlignment.center,
+                direction: Axis.horizontal,
                 children: educationCards,
               ),
             )
