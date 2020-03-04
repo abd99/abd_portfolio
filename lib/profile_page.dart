@@ -1,3 +1,4 @@
+import 'package:abd_portfolio/constants.dart';
 import 'package:abd_portfolio/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,13 @@ class ProfilePage extends StatelessWidget {
         appBar: ResponsiveWidget.isSmallScreen(context)
             ? AppBar(
                 elevation: 0.0,
+                centerTitle: true,
+                title: Text(
+                  'Abdullah Deshmukh - Mobile Developer',
+                  style: kLabelTextStyle.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
               )
             : null,
         drawer: ResponsiveWidget.isSmallScreen(context)
