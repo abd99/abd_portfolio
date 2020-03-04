@@ -39,7 +39,7 @@ class EducationCard extends StatelessWidget {
           ),
           Text(
             year,
-            style: kBodyTextStyle,
+            style: kLabelTextStyle,
             textAlign: TextAlign.center,
           ),
         ],

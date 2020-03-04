@@ -14,6 +14,7 @@ const kTitleTextStyle = TextStyle(
 );
 
 const kSecondaryTitleTextStyle = TextStyle(
+  fontFamily: 'GoogleSansMedium',
   fontSize: 22.0,
   fontWeight: FontWeight.bold,
   letterSpacing: 1.5,

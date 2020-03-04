@@ -38,14 +38,14 @@ class SkillsInfo extends StatelessWidget {
     ReusableCard(
       customColor: kActiveCardColor,
       cardChild: SkillCard(
-        label: 'C',
+        label: 'C/C++',
         icon: FontAwesomeIcons.code,
       ),
     ),
     ReusableCard(
       customColor: kActiveCardColor,
       cardChild: SkillCard(
-        label: 'C++',
+        label: 'Python',
         icon: FontAwesomeIcons.python,
       ),
     ),
