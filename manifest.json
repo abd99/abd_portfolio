@@ -1,0 +1,23 @@
+{
+  "name": "abd_portfolio",
+  "short_name": "abd_portfolio",
+  "start_url": ".",
+  "display": "minimal-ui",
+  "background_color": "#0175C2",
+  "theme_color": "#0175C2",
+  "description": "A new Flutter project.",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icons/abd_profile.jpeg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/abd_profile.jpeg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
