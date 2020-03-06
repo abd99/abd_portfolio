@@ -6,6 +6,7 @@ import 'components/education_info.dart';
 import 'components/nav_button.dart';
 import 'components/nav_header.dart';
 import 'components/profile_info.dart';
+import 'components/projects_info.dart';
 import 'components/skills_info.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -58,7 +59,8 @@ class ProfilePage extends StatelessWidget {
             : null,
         body: SingleChildScrollView(
           child: AnimatedPadding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.025),
+            padding: EdgeInsets.all(MediaQuery.of(context).size.height *
+                ((ResponsiveWidget.isLargeScreen(context)) ? 0.025 : 0.00)),
             duration: Duration(seconds: 1),
             child: ResponsiveWidget(
               largeScreen: Column(
@@ -82,6 +84,7 @@ class ProfilePage extends StatelessWidget {
                   ProfileInfo(),
                   EducationInfo(),
                   SkillsInfo(),
+                  ProjectsInfo(),
                 ],
               ),
             ),

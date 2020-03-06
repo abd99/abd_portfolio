@@ -31,6 +31,7 @@ class SkillCategoryCard extends StatelessWidget {
                   child: Text(
                     categoryTitle,
                     style: kSecondaryTitleTextStyle,
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 Wrap(

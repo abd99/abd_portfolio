@@ -86,6 +86,10 @@ class SkillsInfo extends StatelessWidget {
       label: 'MongoDB',
       icon: FontAwesomeIcons.database,
     ),
+    SkillCard(
+      label: 'Oracle',
+      icon: FontAwesomeIcons.database,
+    ),
   ];
 
   final List<Widget> toolsSkillCards = [
