@@ -7,6 +7,10 @@ import 'education_card.dart';
 import 'reusable_card.dart';
 
 class EducationInfo extends StatelessWidget {
+  EducationInfo({
+    Key key,
+  }) : super(key: key);
+
   final List<Widget> educationCards = [
     ReusableCard(
       customColor: kActiveCardColor,

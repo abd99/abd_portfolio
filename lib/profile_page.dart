@@ -11,26 +11,53 @@ import 'components/skills_info.dart';
 import 'components/training_info.dart';
 
 class ProfilePage extends StatelessWidget {
-  List<Widget> navButtons() => [
+  final profileKey = GlobalKey();
+  final educationKey = GlobalKey();
+  final skillsKey = GlobalKey();
+  final projectsKey = GlobalKey();
+  final trainingKey = GlobalKey();
+
+  List<Widget> navButtons(@required context) => [
         NavButton(
           text: "About",
-          onPressed: () {},
+          onPressed: () {
+            Scrollable.ensureVisible(profileKey.currentContext);
+            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
+          },
         ),
         NavButton(
           text: "Education",
-          onPressed: () {},
+          onPressed: () {
+            Scrollable.ensureVisible(educationKey.currentContext);
+            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
+          },
         ),
         NavButton(
           text: "Skills",
-          onPressed: () {},
+          onPressed: () {
+            Scrollable.ensureVisible(skillsKey.currentContext);
+            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
+          },
         ),
         NavButton(
           text: "Projects",
-          onPressed: () {},
+          onPressed: () {
+            Scrollable.ensureVisible(projectsKey.currentContext);
+            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
+          },
+        ),
+        NavButton(
+          text: "Trainings and Certifications",
+          onPressed: () {
+            Scrollable.ensureVisible(trainingKey.currentContext);
+            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
+          },
         ),
         NavButton(
           text: "Contact",
-          onPressed: () {},
+          onPressed: () {
+            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
+          },
         ),
       ];
 
@@ -52,9 +79,12 @@ class ProfilePage extends StatelessWidget {
             : null,
         drawer: ResponsiveWidget.isSmallScreen(context)
             ? Drawer(
-                child: ListView(
-                  padding: EdgeInsets.all(16.0),
-                  children: navButtons(),
+                child: Container(
+                  color: kInactiveCardColor,
+                  child: ListView(
+                    padding: EdgeInsets.all(16.0),
+                    children: navButtons(context),
+                  ),
                 ),
               )
             : null,
@@ -72,7 +102,7 @@ class ProfilePage extends StatelessWidget {
                         ? Column(
                             children: <Widget>[
                               NavHeader(
-                                navButtons: navButtons(),
+                                navButtons: navButtons(context),
                               ),
                               SizedBox(
                                 height:
@@ -82,11 +112,21 @@ class ProfilePage extends StatelessWidget {
                           )
                         : null,
                   ),
-                  ProfileInfo(),
-                  EducationInfo(),
-                  SkillsInfo(),
-                  ProjectsInfo(),
-                  TrainingInfo(),
+                  ProfileInfo(
+                    key: profileKey,
+                  ),
+                  EducationInfo(
+                    key: educationKey,
+                  ),
+                  SkillsInfo(
+                    key: skillsKey,
+                  ),
+                  ProjectsInfo(
+                    key: projectsKey,
+                  ),
+                  TrainingInfo(
+                    key: trainingKey,
+                  ),
                 ],
               ),
             ),

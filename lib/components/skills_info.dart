@@ -7,6 +7,10 @@ import 'skill_card.dart';
 import 'skill_category_card.dart';
 
 class SkillsInfo extends StatelessWidget {
+  SkillsInfo({
+    Key key,
+  }) : super(key: key);
+
   final List<Widget> languageSkillCards = [
     SkillCard(
       label: 'Java',

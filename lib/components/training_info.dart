@@ -5,6 +5,10 @@ import 'reusable_card.dart';
 import 'training_card.dart';
 
 class TrainingInfo extends StatelessWidget {
+  TrainingInfo({
+    Key key,
+  }) : super(key: key);
+
   final List<Widget> trainingCards = [
     ReusableCard(
       customColor: kActiveCardColor,

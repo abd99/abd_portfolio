@@ -4,6 +4,10 @@ import '../responsive_widget.dart';
 import 'reusable_card.dart';
 
 class ProfileInfo extends StatelessWidget {
+  ProfileInfo({
+    Key key,
+  }) : super(key: key);
+
   profileImage(context) => Container(
         height: ResponsiveWidget.isSmallScreen(context)
             ? MediaQuery.of(context).size.height * 0.25

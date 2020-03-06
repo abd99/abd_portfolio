@@ -5,6 +5,10 @@ import 'project_card.dart';
 import 'reusable_card.dart';
 
 class ProjectsInfo extends StatelessWidget {
+  ProjectsInfo({
+    Key key,
+  }) : super(key: key);
+
   final List<Widget> projectCards = [
     ReusableCard(
       customColor: kActiveCardColor,
