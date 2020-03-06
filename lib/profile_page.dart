@@ -8,6 +8,7 @@ import 'components/nav_header.dart';
 import 'components/profile_info.dart';
 import 'components/projects_info.dart';
 import 'components/skills_info.dart';
+import 'components/training_info.dart';
 
 class ProfilePage extends StatelessWidget {
   List<Widget> navButtons() => [
@@ -85,6 +86,7 @@ class ProfilePage extends StatelessWidget {
                   EducationInfo(),
                   SkillsInfo(),
                   ProjectsInfo(),
+                  TrainingInfo(),
                 ],
               ),
             ),

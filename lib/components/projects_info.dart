@@ -5,7 +5,7 @@ import 'project_card.dart';
 import 'reusable_card.dart';
 
 class ProjectsInfo extends StatelessWidget {
-  final List<Widget> educationCards = [
+  final List<Widget> projectCards = [
     ReusableCard(
       customColor: kActiveCardColor,
       cardChild: ProjectCard(
@@ -69,7 +69,7 @@ class ProjectsInfo extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: educationCards,
+                children: projectCards,
               ),
             ),
           ],
