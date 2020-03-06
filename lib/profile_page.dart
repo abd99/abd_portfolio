@@ -2,6 +2,7 @@ import 'package:abd_portfolio/constants.dart';
 import 'package:abd_portfolio/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'components/contact_info.dart';
 import 'components/education_info.dart';
 import 'components/nav_button.dart';
 import 'components/nav_header.dart';
@@ -16,8 +17,9 @@ class ProfilePage extends StatelessWidget {
   final skillsKey = GlobalKey();
   final projectsKey = GlobalKey();
   final trainingKey = GlobalKey();
+  final contactKey = GlobalKey();
 
-  List<Widget> navButtons(@required context) => [
+  List<Widget> navButtons(context) => [
         NavButton(
           text: "About",
           onPressed: () {
@@ -56,6 +58,7 @@ class ProfilePage extends StatelessWidget {
         NavButton(
           text: "Contact",
           onPressed: () {
+            Scrollable.ensureVisible(contactKey.currentContext);
             if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
           },
         ),
@@ -127,6 +130,9 @@ class ProfilePage extends StatelessWidget {
                   TrainingInfo(
                     key: trainingKey,
                   ),
+                  ContactInfo(
+                    key: contactKey,
+                  )
                 ],
               ),
             ),
