@@ -10,21 +10,27 @@ class NavButton extends StatelessWidget {
       {Key key,
       @required this.text,
       @required this.onPressed,
-      this.color = kButtonColor})
+      this.color = kButtonOutlineColor})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 4.0),
-      child: OutlineButton(
-        child: Text(text),
-        borderSide: BorderSide(
-          color: color,
-          width: 4.5,
+      child: RawMaterialButton(
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 16.0,
+          ),
+          textAlign: TextAlign.center,
         ),
+        // borderSide: BorderSide(
+        //   color: color,
+        //   width: 4.5,
+        // ),
         onPressed: onPressed,
-        highlightedBorderColor: color,
+        // highlightedBorderColor: color,
       ),
     );
   }

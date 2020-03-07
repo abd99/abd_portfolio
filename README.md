@@ -1,16 +1,15 @@
-# abd_portfolio
+# Abdullah Deshmukh - Mobile Developer
 
-A new Flutter project.
+My portfolio website built using Flutter
 
-## Getting Started
+## Screens
 
-This project is a starting point for a Flutter application.
+### Desktop Site
 
-A few resources to get you started if this is your first Flutter project:
+![alt](screenshots/screenshot_desktop.png "Desktop Mode")
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Mobile Site
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![alt](screenshots/screenshot_mobile.png "Mobile Mode")
+
+[Click here to visit](https://abd99.github.io/abd_portfolio/)
