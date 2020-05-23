@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Abdullah Deshmukh - Mobile Developer',
       theme: ThemeData(
+        primarySwatch: Colors.blueGrey,
         brightness: Brightness.dark,
         primaryColor: Color(0xFF0A0E21),
         scaffoldBackgroundColor: Color(0xFF0A0E21),
