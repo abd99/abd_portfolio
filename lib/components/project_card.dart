@@ -5,7 +5,7 @@ import 'reusable_card.dart';
 
 class ProjectCard extends StatelessWidget {
   final String projectTitle;
-  String subTitle;
+  final String subTitle;
   final String year;
   final String projectDescription;
   final String techStack;
@@ -20,9 +20,6 @@ class ProjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (subTitle.isNotEmpty) {
-      subTitle = ' - $subTitle';
-    }
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * 0.025),
@@ -51,7 +48,7 @@ class ProjectCard extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: subTitle,
+                            text: ' - $subTitle',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,

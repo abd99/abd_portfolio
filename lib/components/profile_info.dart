@@ -59,7 +59,7 @@ class ProfileInfo extends StatelessWidget {
           height: 20,
           width: 150,
           child: Divider(
-            color: Colors.teal.shade100,
+            color: Theme.of(context).accentColor,
           ),
         ),
         ResponsiveWidget(

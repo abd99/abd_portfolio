@@ -74,6 +74,15 @@ class ContactInfo extends StatelessWidget {
             height: 8.0,
           ),
           Text(
+            'Made with ♥ in Flutter.',
+            style: kLabelTextStyle.copyWith(
+              fontSize: 16.0,
+            ),
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          Text(
             'Copyright \u00a9 2020 | Abdullah Deshmukh',
             textAlign: TextAlign.center,
             style: kLabelTextStyle.copyWith(

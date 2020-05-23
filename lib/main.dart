@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
         brightness: Brightness.dark,
         primaryColor: Color(0xFF0A0E21),
+        accentColor: Color(0xFF8D8E98),
         scaffoldBackgroundColor: Color(0xFF0A0E21),
         fontFamily: 'GoogleSansRegular',
       ),
