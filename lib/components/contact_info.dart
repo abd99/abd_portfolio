@@ -48,7 +48,7 @@ class ContactInfo extends StatelessWidget {
     RoundIconButton(
       icon: FontAwesomeIcons.twitter,
       onPressed: () async {
-        const url = 'https://twitter.com/Official_Abd_';
+        const url = 'https://twitter.com/abdullahzakir99';
         if (await canLaunch(url)) {
           await launch(url);
         } else {
