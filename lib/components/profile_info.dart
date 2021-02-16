@@ -1,5 +1,8 @@
 import 'package:abd_portfolio/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:visibility_detector/visibility_detector.dart';
+import '../profile_image_visibility.dart';
 import '../responsive_widget.dart';
 import 'reusable_card.dart';
 
@@ -8,21 +11,34 @@ class ProfileInfo extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  profileImage(context) => Container(
-        height: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.width * 0.25,
-        width: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.width * 0.25,
-        decoration: BoxDecoration(
-          backgroundBlendMode: BlendMode.luminosity,
-          color: kButtonColor,
-          shape: BoxShape.circle,
-          image: DecorationImage(
-            image: AssetImage("images/abd_profile.jpeg"),
-            alignment: Alignment.center,
-            fit: BoxFit.cover,
+  profileImage(context) => VisibilityDetector(
+        onVisibilityChanged: (info) {
+          debugPrint("${info.visibleFraction} of my widget is visible");
+          var imageVisibility =
+              Provider.of<ProfileImageVisibility>(context, listen: false);
+          if (info.visibleFraction <= 0) {
+            imageVisibility.setVisibilityFalse();
+          } else {
+            imageVisibility.setVisibilityTrue();
+          }
+        },
+        key: Key("ImageVisibilityKey"),
+        child: Container(
+          height: ResponsiveWidget.isSmallScreen(context)
+              ? MediaQuery.of(context).size.height * 0.25
+              : MediaQuery.of(context).size.width * 0.25,
+          width: ResponsiveWidget.isSmallScreen(context)
+              ? MediaQuery.of(context).size.height * 0.25
+              : MediaQuery.of(context).size.width * 0.25,
+          decoration: BoxDecoration(
+            backgroundBlendMode: BlendMode.luminosity,
+            color: kButtonColor,
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: AssetImage("images/abd_profile.jpeg"),
+              alignment: Alignment.center,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       );

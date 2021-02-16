@@ -1,4 +1,6 @@
+import 'package:abd_portfolio/profile_image_visibility.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'profile_page.dart';
 
@@ -8,7 +10,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Abdullah Deshmukh - Mobile Developer',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFF0A0E21),
         fontFamily: 'GoogleSansRegular',
       ),
-      home: ProfilePage(),
+      home: ChangeNotifierProvider<ProfileImageVisibility>(
+        create: (context) => ProfileImageVisibility(),
+        child: ProfilePage(),
+      ),
     );
   }
 }
