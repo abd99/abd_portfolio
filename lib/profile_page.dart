@@ -18,54 +18,62 @@ class ProfilePage extends StatelessWidget {
   final projectsKey = GlobalKey();
   final trainingKey = GlobalKey();
   final contactKey = GlobalKey();
+  final scrollController = ScrollController();
+  final scrollDuration = Duration(milliseconds: 500);
 
-  List<Widget> navButtons(context) => [
-        NavButton(
-          text: "About",
-          onPressed: () {
-            Scrollable.ensureVisible(profileKey.currentContext);
-            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
-          },
-        ),
-        NavButton(
-          text: "Education",
-          onPressed: () {
-            Scrollable.ensureVisible(educationKey.currentContext);
-            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
-          },
-        ),
-        NavButton(
-          text: "Skills",
-          onPressed: () {
-            Scrollable.ensureVisible(skillsKey.currentContext);
-            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
-          },
-        ),
-        NavButton(
-          text: "Projects",
-          onPressed: () {
-            Scrollable.ensureVisible(projectsKey.currentContext);
-            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
-          },
-        ),
-        NavButton(
-          text: "Trainings and Certifications",
-          onPressed: () {
-            Scrollable.ensureVisible(trainingKey.currentContext);
-            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
-          },
-        ),
-        NavButton(
-          text: "Contact",
-          onPressed: () {
-            Scrollable.ensureVisible(contactKey.currentContext);
-            if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
-          },
-        ),
-      ];
+  void scrollToKey(BuildContext context, GlobalKey key) {
+    RenderBox box = key.currentContext.findRenderObject();
+    Offset position = box.localToGlobal(Offset.zero);
+    var currentOffset = scrollController.offset;
+    var destinationOffset = position.dy;
+
+    scrollController.animateTo(destinationOffset + currentOffset - 50.0,
+        duration: scrollDuration, curve: Curves.fastLinearToSlowEaseIn);
+
+    if (ResponsiveWidget.isSmallScreen(context)) Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> navButtons(context) => [
+          NavButton(
+            text: "About",
+            onPressed: () {
+              scrollToKey(context, profileKey);
+            },
+          ),
+          NavButton(
+            text: "Education",
+            onPressed: () {
+              scrollToKey(context, educationKey);
+            },
+          ),
+          NavButton(
+            text: "Skills",
+            onPressed: () {
+              scrollToKey(context, skillsKey);
+            },
+          ),
+          NavButton(
+            text: "Projects",
+            onPressed: () {
+              scrollToKey(context, projectsKey);
+            },
+          ),
+          NavButton(
+            text: "Trainings and Certifications",
+            onPressed: () {
+              scrollToKey(context, trainingKey);
+            },
+          ),
+          NavButton(
+            text: "Contact",
+            onPressed: () {
+              scrollToKey(context, contactKey);
+            },
+          ),
+        ];
+
     return ResponsiveWidget(
       largeScreen: Scaffold(
         appBar: ResponsiveWidget.isSmallScreen(context)
@@ -91,50 +99,57 @@ class ProfilePage extends StatelessWidget {
                 ),
               )
             : null,
-        body: SingleChildScrollView(
-          child: AnimatedPadding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.height *
-                ((ResponsiveWidget.isLargeScreen(context)) ? 0.025 : 0.00)),
-            duration: Duration(seconds: 1),
-            child: ResponsiveWidget(
-              largeScreen: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: ResponsiveWidget.isLargeScreen(context)
-                        ? Column(
-                            children: <Widget>[
-                              NavHeader(
-                                navButtons: navButtons(context),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.025,
-                              ),
-                            ],
-                          )
-                        : null,
+        body: AnimatedPadding(
+          padding: EdgeInsets.all(MediaQuery.of(context).size.height *
+              ((ResponsiveWidget.isLargeScreen(context)) ? 0.025 : 0.00)),
+          duration: Duration(seconds: 1),
+          child: ResponsiveWidget(
+            largeScreen: Column(
+              children: [
+                Container(
+                  child: ResponsiveWidget.isLargeScreen(context)
+                      ? Column(
+                          children: <Widget>[
+                            NavHeader(
+                              navButtons: navButtons(context),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.025,
+                            ),
+                          ],
+                        )
+                      : null,
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    controller: scrollController,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        ProfileInfo(
+                          key: profileKey,
+                        ),
+                        EducationInfo(
+                          key: educationKey,
+                        ),
+                        SkillsInfo(
+                          key: skillsKey,
+                        ),
+                        ProjectsInfo(
+                          key: projectsKey,
+                        ),
+                        TrainingInfo(
+                          key: trainingKey,
+                        ),
+                        ContactInfo(
+                          key: contactKey,
+                        )
+                      ],
+                    ),
                   ),
-                  ProfileInfo(
-                    key: profileKey,
-                  ),
-                  EducationInfo(
-                    key: educationKey,
-                  ),
-                  SkillsInfo(
-                    key: skillsKey,
-                  ),
-                  ProjectsInfo(
-                    key: projectsKey,
-                  ),
-                  TrainingInfo(
-                    key: trainingKey,
-                  ),
-                  ContactInfo(
-                    key: contactKey,
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
