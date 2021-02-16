@@ -3,28 +3,29 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "main.dart.js": "b2f6071d0fef19524dda5d4bff95479f",
-"index.html": "2aa30342fbb7b4929b0587d510245cc3",
-"/": "2aa30342fbb7b4929b0587d510245cc3",
-"assets/FontManifest.json": "6ffcae9d9402185f45d8a5b9949fc220",
-"assets/abd_profile.jpeg": "50897d2fee6a8df7ad80026fcaef776e",
-"assets/fonts/SourceSansPro-Regular.ttf": "c1678b46f7dd3f50ceac94ed4e0ad01a",
-"assets/fonts/GoogleSans-Medium.ttf": "8d57e4014b18edef070d285746485115",
-"assets/fonts/Spartan-Medium.ttf": "217d42a9239169e2273937872d6ed272",
-"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"assets/fonts/GoogleSansRegular.ttf": "b5c77a6aed75cdad9489effd0d5ea411",
-"assets/images/abd_profile.jpeg": "50897d2fee6a8df7ad80026fcaef776e",
-"assets/NOTICES": "e4248de0f55478bf9b0b14ab1ee8fcf4",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "0ea892e09437fcaa050b2b15c53173b7",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "51d23d1c30deda6f34673e0d5600fd38",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "d51b09f7b8345b41dd3b2201f653c62b",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
-"assets/GoogleSansRegular.ttf": "b5c77a6aed75cdad9489effd0d5ea411",
-"assets/AssetManifest.json": "32708e2eb6ee3f0b9093987c4f48adcd",
-"icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"icons/abd_profile.jpeg": "50897d2fee6a8df7ad80026fcaef776e",
+  "version.json": "6f32aa7bd5f96302a40c7e0083f703f3",
+"index.html": "125a3907fde665c7174f14065e3e6d62",
+"/": "125a3907fde665c7174f14065e3e6d62",
+"main.dart.js": "cfe250ed15a4733d54fe7046e7148401",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
-"manifest.json": "8cd4dbdf05b5260f02ce9d0c18abb886"
+"icons/abd_profile.jpeg": "50897d2fee6a8df7ad80026fcaef776e",
+"icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
+"manifest.json": "8cd4dbdf05b5260f02ce9d0c18abb886",
+"assets/images/abd_profile.jpeg": "50897d2fee6a8df7ad80026fcaef776e",
+"assets/AssetManifest.json": "864ff25122fb0abb9cc54c2d24cad780",
+"assets/NOTICES": "2645281dcd9ab5b01d3aabc539ea3515",
+"assets/GoogleSansRegular.ttf": "b5c77a6aed75cdad9489effd0d5ea411",
+"assets/FontManifest.json": "6ffcae9d9402185f45d8a5b9949fc220",
+"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "0ea892e09437fcaa050b2b15c53173b7",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "d51b09f7b8345b41dd3b2201f653c62b",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "51d23d1c30deda6f34673e0d5600fd38",
+"assets/abd_profile.jpeg": "50897d2fee6a8df7ad80026fcaef776e",
+"assets/fonts/Spartan-Medium.ttf": "217d42a9239169e2273937872d6ed272",
+"assets/fonts/SourceSansPro-Regular.ttf": "c1678b46f7dd3f50ceac94ed4e0ad01a",
+"assets/fonts/GoogleSansRegular.ttf": "b5c77a6aed75cdad9489effd0d5ea411",
+"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
+"assets/fonts/GoogleSans-Medium.ttf": "8d57e4014b18edef070d285746485115"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -38,10 +39,11 @@ const CORE = [
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
@@ -106,6 +108,9 @@ self.addEventListener("activate", function(event) {
 // The fetch handler redirects requests for RESOURCE files to the service
 // worker cache.
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== 'GET') {
+    return;
+  }
   var origin = self.location.origin;
   var key = event.request.url.substring(origin.length + 1);
   // Redirect URLs to the index.html
@@ -115,9 +120,10 @@ self.addEventListener("fetch", (event) => {
   if (event.request.url == origin || event.request.url.startsWith(origin + '/#') || key == '') {
     key = '/';
   }
-  // If the URL is not the RESOURCE list, skip the cache.
+  // If the URL is not the RESOURCE list then return to signal that the
+  // browser should take over.
   if (!RESOURCES[key]) {
-    return event.respondWith(fetch(event.request));
+    return;
   }
   // If the URL is the index.html, perform an online-first request.
   if (key == '/') {
@@ -141,10 +147,12 @@ self.addEventListener('message', (event) => {
   // SkipWaiting can be used to immediately activate a waiting service worker.
   // This will also require a page refresh triggered by the main worker.
   if (event.data === 'skipWaiting') {
-    return self.skipWaiting();
+    self.skipWaiting();
+    return;
   }
-  if (event.message === 'downloadOffline') {
+  if (event.data === 'downloadOffline') {
     downloadOffline();
+    return;
   }
 });
 
@@ -161,7 +169,7 @@ async function downloadOffline() {
     }
     currentContent[key] = true;
   }
-  for (var resourceKey in Object.keys(RESOURCES)) {
+  for (var resourceKey of Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
       resources.push(resourceKey);
     }
