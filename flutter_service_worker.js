@@ -6,14 +6,14 @@ const RESOURCES = {
   "version.json": "6f32aa7bd5f96302a40c7e0083f703f3",
 "index.html": "125a3907fde665c7174f14065e3e6d62",
 "/": "125a3907fde665c7174f14065e3e6d62",
-"main.dart.js": "cfe250ed15a4733d54fe7046e7148401",
+"main.dart.js": "ec86395b880d8f4f1d5145c406b8cba3",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/abd_profile.jpeg": "50897d2fee6a8df7ad80026fcaef776e",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "manifest.json": "8cd4dbdf05b5260f02ce9d0c18abb886",
 "assets/images/abd_profile.jpeg": "50897d2fee6a8df7ad80026fcaef776e",
 "assets/AssetManifest.json": "864ff25122fb0abb9cc54c2d24cad780",
-"assets/NOTICES": "2645281dcd9ab5b01d3aabc539ea3515",
+"assets/NOTICES": "167114a65a0eb692ef84d00f9ff4d6da",
 "assets/GoogleSansRegular.ttf": "b5c77a6aed75cdad9489effd0d5ea411",
 "assets/FontManifest.json": "6ffcae9d9402185f45d8a5b9949fc220",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
@@ -43,7 +43,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value, {'cache': 'reload'})));
+        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
     })
   );
 });
