@@ -109,23 +109,23 @@ class ExperienceCard extends StatelessWidget {
 
                               return MouseRegionSpan(
                                 inlineSpan: TextSpan(
-                                    text: textItem.text,
-                                    style: textItem.url != null
-                                        ? kBodyTextStyle.copyWith(
-                                            decoration:
-                                                TextDecoration.underline,
-                                          )
-                                        : null,
-                                    recognizer: textItem.url != null
-                                        ? (TapGestureRecognizer()
-                                          ..onTap = () async {
-                                            if (await canLaunch(textItem.url)) {
-                                              await launch(textItem.url);
-                                            } else {
-                                              throw 'Could not launch ${textItem.url}';
-                                            }
-                                          })
-                                        : null),
+                                  text: textItem.text,
+                                  style: textItem.url != null
+                                      ? kBodyTextStyle.copyWith(
+                                          decoration: TextDecoration.underline,
+                                        )
+                                      : null,
+                                  recognizer: textItem.url != null
+                                      ? (TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          if (await canLaunch(textItem.url)) {
+                                            await launch(textItem.url);
+                                          } else {
+                                            throw 'Could not launch ${textItem.url}';
+                                          }
+                                        })
+                                      : null,
+                                ),
                               );
                             },
                           ),
