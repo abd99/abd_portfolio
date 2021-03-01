@@ -3,13 +3,13 @@ import 'package:abd_portfolio/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'components/contact_info.dart';
-import 'components/education_info.dart';
-import 'components/experience_info.dart';
+import 'education/widgets/education_info.dart';
+import 'experience/widgets/experience_info.dart';
 import 'components/nav_button.dart';
 import 'components/nav_header.dart';
 import 'components/profile_info.dart';
-import 'components/projects_info.dart';
-import 'components/skills_info.dart';
+import 'projects/widgets/projects_info.dart';
+import 'skills/widgets/skills_info.dart';
 
 class ProfilePage extends StatelessWidget {
   final profileKey = GlobalKey();

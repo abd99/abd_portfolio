@@ -1,15 +1,17 @@
 import 'package:flutter/foundation.dart';
 
-class Experience {
+class Project {
   final String title;
-  final String company;
+  final String subTitle;
   final List<String> description;
   final String year;
+  final String techStack;
 
-  Experience({
+  const Project({
     @required this.title,
-    @required this.company,
+    @required this.subTitle,
     @required this.description,
     @required this.year,
+    @required this.techStack,
   });
 }

@@ -1,18 +1,13 @@
+import 'package:abd_portfolio/education/models/college.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 class EducationCard extends StatelessWidget {
-  final String collegeName;
-  final String universityName;
-  final String year;
-  final String courseName;
+  final College college;
 
-  EducationCard({
-    this.collegeName,
-    this.universityName,
-    this.year,
-    this.courseName,
+  const EducationCard({
+    @required this.college,
   });
 
   @override
@@ -23,22 +18,22 @@ class EducationCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            collegeName,
+            college.collegeName,
             style: kSecondaryTitleTextStyle,
             textAlign: TextAlign.center,
           ),
           Text(
-            universityName,
+            college.universityName,
             style: kBodyTextStyle,
             textAlign: TextAlign.center,
           ),
           Text(
-            courseName,
+            college.courseName,
             style: kBodyTextStyle,
             textAlign: TextAlign.center,
           ),
           Text(
-            year,
+            college.year,
             style: kLabelTextStyle,
             textAlign: TextAlign.center,
           ),

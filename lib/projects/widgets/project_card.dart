@@ -1,18 +1,13 @@
+import 'package:abd_portfolio/projects/models/project.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
-class ExperienceCard extends StatelessWidget {
-  final String title;
-  final String company;
-  final String year;
-  final List<String> description;
+class ProjectCard extends StatelessWidget {
+  final Project project;
 
-  ExperienceCard({
-    @required this.title,
-    @required this.company,
-    @required this.description,
-    @required this.year,
+  const ProjectCard({
+    @required this.project,
   });
 
   @override
@@ -39,13 +34,13 @@ class ExperienceCard extends StatelessWidget {
                         style: DefaultTextStyle.of(context).style,
                         children: <TextSpan>[
                           TextSpan(
-                            text: title,
+                            text: project.title,
                             style: kSecondaryTitleTextStyle.copyWith(
                               fontSize: 18.0,
                             ),
                           ),
                           TextSpan(
-                            text: '\n$company',
+                            text: ' - ${project.subTitle}',
                             style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
@@ -59,7 +54,7 @@ class ExperienceCard extends StatelessWidget {
                     fit: FlexFit.tight,
                     flex: 10,
                     child: Text(
-                      year,
+                      project.year,
                       style: kLabelTextStyle,
                       textAlign: TextAlign.end,
                     ),
@@ -69,28 +64,51 @@ class ExperienceCard extends StatelessWidget {
               SizedBox(
                 height: 16.0,
               ),
-              ...List<Padding>.generate(
-                description.length,
-                (index) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 2.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5.0),
-                        child: Text('- '),
-                      ),
-                      Expanded(
-                        child: Text(
-                          '${description[index]}',
-                          style: kBodyTextStyle,
-                          textAlign: TextAlign.start,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              ...List.generate(
+                  project.description.length,
+                  (index) => Text(
+                        project.description[index],
+                        style: kBodyTextStyle,
+                        textAlign: TextAlign.start,
+                      )),
+              SizedBox(
+                height: 16.0,
               ),
+
+              RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Tech Stack: ',
+                      style: kBodyTextStyle.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: project.techStack,
+                      style: kBodyTextStyle,
+                    ),
+                  ],
+                ),
+              )
+              // Row(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: <Widget>[
+              //     Text(
+              //       'Tech Stack: ',
+              //       style: kBodyTextStyle.copyWith(fontWeight: FontWeight.bold),
+              //       textAlign: TextAlign.start,
+              //     ),
+              //     Flexible(
+              //       child: Text(
+              //         techStack,
+              //         style: kBodyTextStyle,
+              //         textAlign: TextAlign.start,
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),

@@ -1,36 +1,26 @@
+import '../data/college_list.dart';
 import 'package:flutter/material.dart';
 
 import 'package:abd_portfolio/responsive_widget.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 import 'education_card.dart';
-import 'reusable_card.dart';
+import '../../components/reusable_card.dart';
 
 class EducationInfo extends StatelessWidget {
   EducationInfo({
     Key key,
   }) : super(key: key);
 
-  final List<Widget> educationCards = [
-    ReusableCard(
+  final List<Widget> educationCards = List.generate(
+    collegeList.length,
+    (index) => ReusableCard(
       customColor: kActiveCardColor,
       cardChild: EducationCard(
-        collegeName: 'Zeal College of Engineering\, Pune',
-        universityName: 'Savitribai Phule Pune University',
-        year: '2018 - Present',
-        courseName: 'BE in Computer Engineering',
+        college: collegeList[index],
       ),
     ),
-    ReusableCard(
-      customColor: kActiveCardColor,
-      cardChild: EducationCard(
-        collegeName: 'MIT Polytechnic\, Pune',
-        universityName: 'Maharashtra State Board of Technical Education',
-        year: '2015 - 2018',
-        courseName: 'Diploma in Computer Engineering',
-      ),
-    ),
-  ];
+  );
 
   @override
   Widget build(BuildContext context) {
