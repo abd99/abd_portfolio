@@ -11,7 +11,6 @@ const List<Project> projectsList = [
       '- Cirriculum',
       '- Questions Papers',
       '- Solved Modal Answer Papers',
-      '- More than 10K downloads on Google Play Store',
     ],
     year: '2017 - 2019',
     techStack: 'Native Android(Java), Firebase Cloud Storage',
