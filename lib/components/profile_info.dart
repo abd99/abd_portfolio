@@ -55,7 +55,7 @@ class ProfileInfo extends StatelessWidget {
               letterSpacing: 2.0,
               fontSize: 40.0,
               color: Colors.white,
-              fontWeight: FontWeight.bold,
+              fontFamily: 'GoogleSansMedium',
             ),
             maxLines: 2,
             textAlign: TextAlign.center,
