@@ -1,14 +1,17 @@
-import 'package:abd_portfolio/responsive_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/fa_icon.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
+import '../../responsive_widget.dart';
 
-class IconContent extends StatelessWidget {
-  final IconData icon;
+class SkillCard extends StatelessWidget {
   final String label;
+  final IconData icon;
 
-  IconContent({this.icon, this.label});
+  const SkillCard({
+    @required this.label,
+    @required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class IconContent extends StatelessWidget {
             icon,
             size: ResponsiveWidget.isLargeScreen(context) ? 80.0 : 60.0,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16.0,
           ),
           Text(
