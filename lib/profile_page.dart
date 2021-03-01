@@ -9,14 +9,12 @@ import 'components/nav_header.dart';
 import 'components/profile_info.dart';
 import 'components/projects_info.dart';
 import 'components/skills_info.dart';
-import 'components/training_info.dart';
 
 class ProfilePage extends StatelessWidget {
   final profileKey = GlobalKey();
   final educationKey = GlobalKey();
   final skillsKey = GlobalKey();
   final projectsKey = GlobalKey();
-  final trainingKey = GlobalKey();
   final contactKey = GlobalKey();
   final scrollController = ScrollController();
   final scrollDuration = Duration(milliseconds: 500);
@@ -58,12 +56,6 @@ class ProfilePage extends StatelessWidget {
             text: "Projects",
             onPressed: () {
               scrollToKey(context, projectsKey);
-            },
-          ),
-          NavButton(
-            text: "Trainings and Certifications",
-            onPressed: () {
-              scrollToKey(context, trainingKey);
             },
           ),
           NavButton(
@@ -138,9 +130,6 @@ class ProfilePage extends StatelessWidget {
                         ),
                         ProjectsInfo(
                           key: projectsKey,
-                        ),
-                        TrainingInfo(
-                          key: trainingKey,
                         ),
                         ContactInfo(
                           key: contactKey,
