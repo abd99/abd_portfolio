@@ -17,20 +17,21 @@ class NavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 4.0),
-      child: RawMaterialButton(
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 16.0,
+      child: InkWell(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 16.0,
+            horizontal: 20.0,
           ),
-          textAlign: TextAlign.center,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 16.0,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ),
-        // borderSide: BorderSide(
-        //   color: color,
-        //   width: 4.5,
-        // ),
-        onPressed: onPressed,
-        // highlightedBorderColor: color,
+        onTap: onPressed,
       ),
     );
   }

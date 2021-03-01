@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'components/contact_info.dart';
 import 'components/education_info.dart';
+import 'components/experience_info.dart';
 import 'components/nav_button.dart';
 import 'components/nav_header.dart';
 import 'components/profile_info.dart';
@@ -12,6 +13,7 @@ import 'components/skills_info.dart';
 
 class ProfilePage extends StatelessWidget {
   final profileKey = GlobalKey();
+  final experienceKey = GlobalKey();
   final educationKey = GlobalKey();
   final skillsKey = GlobalKey();
   final projectsKey = GlobalKey();
@@ -38,6 +40,12 @@ class ProfilePage extends StatelessWidget {
             text: "About",
             onPressed: () {
               scrollToKey(context, profileKey);
+            },
+          ),
+          NavButton(
+            text: "Experience",
+            onPressed: () {
+              scrollToKey(context, experienceKey);
             },
           ),
           NavButton(
@@ -119,6 +127,9 @@ class ProfilePage extends StatelessWidget {
                     children: <Widget>[
                       ProfileInfo(
                         key: profileKey,
+                      ),
+                      ExperienceInfo(
+                        key: experienceKey,
                       ),
                       EducationInfo(
                         key: educationKey,
