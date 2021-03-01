@@ -79,7 +79,7 @@ flutter:
         - asset: fonts/SourceSansPro-Regular.ttf
     - family: GoogleSansMedium
       fonts:
-        - asset: fonts/GoogleSans-Medium.ttf
+        - asset: fonts/GoogleSansMedium.ttf
     - family: GoogleSansRegular
       fonts:
         - asset: fonts/GoogleSansRegular.ttf
