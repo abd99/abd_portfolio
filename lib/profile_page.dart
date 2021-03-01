@@ -66,80 +66,77 @@ class ProfilePage extends StatelessWidget {
           ),
         ];
 
-    return ResponsiveWidget(
-      largeScreen: Scaffold(
-        appBar: ResponsiveWidget.isSmallScreen(context)
-            ? AppBar(
-                elevation: 0.0,
-                centerTitle: true,
-                title: Text(
-                  'Abdullah Deshmukh - Mobile Developer',
-                  style: kLabelTextStyle.copyWith(
-                    color: Colors.white,
+    return Scaffold(
+      appBar: ResponsiveWidget.isSmallScreen(context)
+          ? AppBar(
+              elevation: 0.0,
+              centerTitle: true,
+              title: Text(
+                'Abdullah Deshmukh - Mobile Developer',
+                style: kLabelTextStyle.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            )
+          : null,
+      drawer: ResponsiveWidget.isSmallScreen(context)
+          ? Drawer(
+              child: Container(
+                color: kInactiveCardColor,
+                child: ListView(
+                  padding: EdgeInsets.all(16.0),
+                  children: navButtons(context),
+                ),
+              ),
+            )
+          : null,
+      body: AnimatedPadding(
+        padding: EdgeInsets.all(MediaQuery.of(context).size.height *
+            ((!ResponsiveWidget.isSmallScreen(context)) ? 0.025 : 0.00)),
+        duration: Duration(seconds: 1),
+        child: ResponsiveWidget(
+          largeScreen: Column(
+            children: [
+              Container(
+                child: !ResponsiveWidget.isSmallScreen(context)
+                    ? Column(
+                        children: <Widget>[
+                          NavHeader(
+                            navButtons: navButtons(context),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.025,
+                          ),
+                        ],
+                      )
+                    : null,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      ProfileInfo(
+                        key: profileKey,
+                      ),
+                      EducationInfo(
+                        key: educationKey,
+                      ),
+                      SkillsInfo(
+                        key: skillsKey,
+                      ),
+                      ProjectsInfo(
+                        key: projectsKey,
+                      ),
+                      ContactInfo(
+                        key: contactKey,
+                      )
+                    ],
                   ),
                 ),
-              )
-            : null,
-        drawer: ResponsiveWidget.isSmallScreen(context)
-            ? Drawer(
-                child: Container(
-                  color: kInactiveCardColor,
-                  child: ListView(
-                    padding: EdgeInsets.all(16.0),
-                    children: navButtons(context),
-                  ),
-                ),
-              )
-            : null,
-        body: AnimatedPadding(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.height *
-              ((ResponsiveWidget.isLargeScreen(context)) ? 0.025 : 0.00)),
-          duration: Duration(seconds: 1),
-          child: ResponsiveWidget(
-            largeScreen: Column(
-              children: [
-                Container(
-                  child: ResponsiveWidget.isLargeScreen(context)
-                      ? Column(
-                          children: <Widget>[
-                            NavHeader(
-                              navButtons: navButtons(context),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.025,
-                            ),
-                          ],
-                        )
-                      : null,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    controller: scrollController,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        ProfileInfo(
-                          key: profileKey,
-                        ),
-                        EducationInfo(
-                          key: educationKey,
-                        ),
-                        SkillsInfo(
-                          key: skillsKey,
-                        ),
-                        ProjectsInfo(
-                          key: projectsKey,
-                        ),
-                        ContactInfo(
-                          key: contactKey,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
