@@ -108,6 +108,7 @@ class ExperienceCard extends StatelessWidget {
                                   experience.textWithLinks.textArray[index];
 
                               return MouseRegionSpan(
+                                cursor: SystemMouseCursors.click,
                                 inlineSpan: TextSpan(
                                   text: textItem.text,
                                   style: textItem.url != null

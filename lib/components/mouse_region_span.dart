@@ -4,9 +4,10 @@ import 'package:flutter/rendering.dart';
 class MouseRegionSpan extends WidgetSpan {
   MouseRegionSpan({
     @required InlineSpan inlineSpan,
+    @required MouseCursor cursor,
   }) : super(
           child: MouseRegion(
-            cursor: SystemMouseCursors.click,
+            cursor: cursor,
             child: Text.rich(
               inlineSpan,
             ),

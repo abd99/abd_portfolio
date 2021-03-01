@@ -2,6 +2,7 @@ import 'package:abd_portfolio/components/mouse_region_span.dart';
 import 'package:abd_portfolio/projects/models/project.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
@@ -82,6 +83,9 @@ class ProjectCard extends StatelessWidget {
                     ),
                     RichText(
                       textAlign: TextAlign.start,
+                      strutStyle: StrutStyle(
+                        fontFamily: 'GoogleSansRegular',
+                      ),
                       text: TextSpan(
                         style: kBodyTextStyle,
                         children: List.generate(
@@ -90,26 +94,41 @@ class ProjectCard extends StatelessWidget {
                             var textItem =
                                 project.textWithLinks.textArray[index];
 
-                            if (textItem.url != null) {
-                              return MouseRegionSpan(
-                                inlineSpan: TextSpan(
-                                  text: textItem.text,
-                                  style: kBodyTextStyle.copyWith(
-                                    decoration: TextDecoration.underline,
-                                  ),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () async {
-                                      if (await canLaunch(textItem.url)) {
-                                        await launch(textItem.url);
-                                      } else {
-                                        throw 'Could not launch ${textItem.url}';
-                                      }
-                                    },
+                            return MouseRegionSpan(
+                              cursor: textItem.url != null
+                                  ? SystemMouseCursors.click
+                                  : SystemMouseCursors.basic,
+                              inlineSpan: TextSpan(
+                                text: textItem.text,
+                                style: kBodyTextStyle.copyWith(
+                                  decoration: textItem.url != null
+                                      ? TextDecoration.underline
+                                      : null,
                                 ),
-                              );
-                            } else {
-                              return TextSpan(text: textItem.text);
-                            }
+                                recognizer: textItem.url != null
+                                    ? (TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        if (await canLaunch(textItem.url)) {
+                                          await launch(textItem.url);
+                                        } else {
+                                          throw 'Could not launch ${textItem.url}';
+                                        }
+                                      })
+                                    : null,
+                              ),
+                            );
+                            // } else {
+                            //   return TextSpan(
+                            //     text: textItem.text,
+                            //     style: TextStyle(
+                            //       color: Colors.white,
+                            //       fontFamily: 'GoogleSansRegular',
+                            //       fontSize: 18.0,
+                            //       height: 1.5,
+                            //       letterSpacing: 0.5,
+                            //     ),
+                            //   );
+                            // }
                           },
                         ),
                       ),
