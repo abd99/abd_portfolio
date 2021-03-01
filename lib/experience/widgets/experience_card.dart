@@ -1,5 +1,8 @@
-import 'package:abd_portfolio/experience/models/experience.dart';
+import '../../components/mouse_region_span.dart';
+import '../models/experience.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
@@ -87,28 +90,45 @@ class ExperienceCard extends StatelessWidget {
                   ),
                 ),
               ),
-              if (experience.urls != null)
+              if (experience.textWithLinks != null)
                 Column(
                   children: [
                     SizedBox(
                       height: 8.0,
                     ),
                     ...List.generate(
-                      experience.urls.length,
-                      (index) => InkWell(
-                        onTap: () async {
-                          if (await canLaunch(experience.urls[0].url)) {
-                            await launch(experience.urls[0].url);
-                          } else {
-                            throw 'Could not launch ${experience.urls[0].url}';
-                          }
-                        },
-                        child: Text(
-                          '${experience.urls[0].text}',
-                          style: kBodyTextStyle.copyWith(
-                            decoration: TextDecoration.underline,
+                      experience.textWithLinks.textArray.length,
+                      (index) => RichText(
+                        text: TextSpan(
+                          style: kBodyTextStyle,
+                          children: List.generate(
+                            experience.textWithLinks.textArray.length,
+                            (index) {
+                              var textItem =
+                                  experience.textWithLinks.textArray[index];
+
+                              return MouseRegionSpan(
+                                inlineSpan: TextSpan(
+                                    text: textItem.text,
+                                    style: textItem.url != null
+                                        ? kBodyTextStyle.copyWith(
+                                            decoration:
+                                                TextDecoration.underline,
+                                          )
+                                        : null,
+                                    recognizer: textItem.url != null
+                                        ? (TapGestureRecognizer()
+                                          ..onTap = () async {
+                                            if (await canLaunch(textItem.url)) {
+                                              await launch(textItem.url);
+                                            } else {
+                                              throw 'Could not launch ${textItem.url}';
+                                            }
+                                          })
+                                        : null),
+                              );
+                            },
                           ),
-                          textAlign: TextAlign.start,
                         ),
                       ),
                     ),

@@ -23,11 +23,13 @@ const List<Experience> experienceList = [
       'Authored a ​codelab​ on different types of testing in Flutter.',
     ],
     year: '2018 - Present',
-    urls: [
-      CustomURL(
-          text: 'Detailed Work Product',
-          url:
-              'https://medium.com/flutter/learn-testing-with-the-new-flutter-sample-gsoc20-work-product-e872c7f6492a?source=friends_link&sk=f97ef3fec577750b16fd941452ed8a7e'),
-    ],
+    textWithLinks: TextWithLinks(
+      textArray: [
+        CustomURL(
+            text: 'Detailed Work Product',
+            url:
+                'https://medium.com/flutter/learn-testing-with-the-new-flutter-sample-gsoc20-work-product-e872c7f6492a?source=friends_link&sk=f97ef3fec577750b16fd941452ed8a7e')
+      ],
+    ),
   ),
 ];
