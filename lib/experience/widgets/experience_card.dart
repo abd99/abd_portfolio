@@ -1,5 +1,6 @@
 import 'package:abd_portfolio/experience/models/experience.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
 
@@ -86,6 +87,33 @@ class ExperienceCard extends StatelessWidget {
                   ),
                 ),
               ),
+              if (experience.urls != null)
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    ...List.generate(
+                      experience.urls.length,
+                      (index) => InkWell(
+                        onTap: () async {
+                          if (await canLaunch(experience.urls[0].url)) {
+                            await launch(experience.urls[0].url);
+                          } else {
+                            throw 'Could not launch ${experience.urls[0].url}';
+                          }
+                        },
+                        child: Text(
+                          '${experience.urls[0].text}',
+                          style: kBodyTextStyle.copyWith(
+                            decoration: TextDecoration.underline,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
             ],
           ),
         ),

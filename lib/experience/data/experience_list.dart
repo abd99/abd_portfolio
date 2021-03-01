@@ -1,3 +1,5 @@
+import 'package:abd_portfolio/models/custom_url.dart';
+
 import '../models/experience.dart';
 
 const List<Experience> experienceList = [
@@ -19,8 +21,13 @@ const List<Experience> experienceList = [
     description: [
       'Collaborated with the Flutter team at Google and built samples for the ​flutter/samples​ repo on different concepts in Flutter including:\n- Unit, widget, performance, Flutter driver, and state management testing.',
       'Authored a ​codelab​ on different types of testing in Flutter.',
-      'Detailed Work Product​.'
     ],
     year: '2018 - Present',
+    urls: [
+      CustomURL(
+          text: 'Detailed Work Product',
+          url:
+              'https://medium.com/flutter/learn-testing-with-the-new-flutter-sample-gsoc20-work-product-e872c7f6492a?source=friends_link&sk=f97ef3fec577750b16fd941452ed8a7e'),
+    ],
   ),
 ];

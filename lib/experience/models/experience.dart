@@ -1,3 +1,4 @@
+import 'package:abd_portfolio/models/custom_url.dart';
 import 'package:flutter/foundation.dart';
 
 class Experience {
@@ -5,11 +6,13 @@ class Experience {
   final String company;
   final List<String> description;
   final String year;
+  final List<CustomURL> urls;
 
   const Experience({
     @required this.title,
     @required this.company,
     @required this.description,
     @required this.year,
+    this.urls,
   });
 }
