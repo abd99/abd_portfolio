@@ -1,5 +1,8 @@
+import 'package:abd_portfolio/components/mouse_region_span.dart';
 import 'package:abd_portfolio/projects/models/project.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
 
@@ -71,10 +74,51 @@ class ProjectCard extends StatelessWidget {
                         style: kBodyTextStyle,
                         textAlign: TextAlign.start,
                       )),
+              if (project.textWithLinks != null)
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    RichText(
+                      textAlign: TextAlign.start,
+                      text: TextSpan(
+                        style: kBodyTextStyle,
+                        children: List.generate(
+                          project.textWithLinks.textArray.length,
+                          (index) {
+                            var textItem =
+                                project.textWithLinks.textArray[index];
+
+                            if (textItem.url != null) {
+                              return MouseRegionSpan(
+                                inlineSpan: TextSpan(
+                                  text: textItem.text,
+                                  style: kBodyTextStyle.copyWith(
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () async {
+                                      if (await canLaunch(textItem.url)) {
+                                        await launch(textItem.url);
+                                      } else {
+                                        throw 'Could not launch ${textItem.url}';
+                                      }
+                                    },
+                                ),
+                              );
+                            } else {
+                              return TextSpan(text: textItem.text);
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               SizedBox(
                 height: 16.0,
               ),
-
               RichText(
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
@@ -92,23 +136,6 @@ class ProjectCard extends StatelessWidget {
                   ],
                 ),
               )
-              // Row(
-              //   crossAxisAlignment: CrossAxisAlignment.start,
-              //   children: <Widget>[
-              //     Text(
-              //       'Tech Stack: ',
-              //       style: kBodyTextStyle.copyWith(fontWeight: FontWeight.bold),
-              //       textAlign: TextAlign.start,
-              //     ),
-              //     Flexible(
-              //       child: Text(
-              //         techStack,
-              //         style: kBodyTextStyle,
-              //         textAlign: TextAlign.start,
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ],
           ),
         ),

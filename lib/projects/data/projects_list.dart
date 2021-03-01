@@ -1,3 +1,5 @@
+import 'package:abd_portfolio/models/custom_url.dart';
+
 import '../models/project.dart';
 
 const List<Project> projectsList = [
@@ -8,11 +10,21 @@ const List<Project> projectsList = [
       'Provides study resources for G-Scheme MSBTE Students such as: ',
       '- Cirriculum',
       '- Questions Papers',
-      '- Solved Modal Answer Papers .',
-      '\n- More than 10K downloads on Google Play Store',
+      '- Solved Modal Answer Papers',
+      '- More than 10K downloads on Google Play Store',
     ],
     year: '2017 - 2019',
     techStack: 'Native Android(Java), Firebase Cloud Storage',
+    textWithLinks: TextWithLinks(
+      textArray: [
+        CustomURL(text: '- More than 10K downloads on the '),
+        CustomURL(
+          text: 'Google Play Store',
+          url:
+              'https://play.google.com/store/apps/details?id=com.abdsoft.msbtestudyguide&hl=en_IN',
+        ),
+      ],
+    ),
   ),
   Project(
     title: 'Med-Dose',
@@ -20,8 +32,8 @@ const List<Project> projectsList = [
     description: [
       'The app:',
       '- Reminds the user to take medicine based upon the set daily dosage times.',
-      '- Rings an optional alarm on the dosage time',
-      '- Keeps a track of the user\'s dosage',
+      '- Rings an optional alarm on the dosage time.',
+      '- Keeps a track of the user\'s dosage.',
     ],
     year: '2018 - Present',
     techStack: 'Native Android(Java), SQLite',
