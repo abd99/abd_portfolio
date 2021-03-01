@@ -6,13 +6,13 @@ class Experience {
   final String company;
   final List<String> description;
   final String year;
-  final List<CustomURL> urls;
+  final TextWithLinks textWithLinks;
 
   const Experience({
     @required this.title,
     @required this.company,
     @required this.description,
     @required this.year,
-    this.urls,
+    this.textWithLinks,
   });
 }

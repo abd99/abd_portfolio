@@ -6,6 +6,13 @@ class CustomURL {
 
   const CustomURL({
     @required this.text,
-    @required this.url,
+    this.url,
+  });
+}
+
+class TextWithLinks {
+  final List<CustomURL> textArray;
+  const TextWithLinks({
+    @required this.textArray,
   });
 }
