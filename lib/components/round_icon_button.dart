@@ -1,6 +1,6 @@
 import 'package:abd_portfolio/responsive_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/fa_icon.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RoundIconButton extends StatelessWidget {
   final IconData icon;
