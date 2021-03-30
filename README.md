@@ -12,4 +12,4 @@ My portfolio website built using Flutter
 
 ![alt](screenshots/screenshot_mobile.png "Mobile Mode")
 
-[Click here to visit](https://abd99.github.io/abd_portfolio/)
+[Click here to visit](https://abd99.github.io)
