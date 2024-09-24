@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class MouseRegionSpan extends WidgetSpan {
   MouseRegionSpan({
-    @required InlineSpan inlineSpan,
-    @required MouseCursor cursor,
+    required InlineSpan inlineSpan,
+    required MouseCursor cursor,
   }) : super(
           child: MouseRegion(
             cursor: cursor,

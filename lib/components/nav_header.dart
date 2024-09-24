@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 import '../responsive_widget.dart';
 
 class NavHeader extends StatelessWidget {
-  final List<Widget> navButtons;
+  final List<Widget>? navButtons;
 
-  const NavHeader({Key key, this.navButtons}) : super(key: key);
+  const NavHeader({Key? key, this.navButtons}) : super(key: key);
 
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -39,7 +39,7 @@ class NavHeader extends StatelessWidget {
               child: (!ResponsiveWidget.isSmallScreen(context))
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: navButtons,
+                      children: navButtons!,
                     )
                   : null,
             ),

@@ -1,3 +1,5 @@
+import 'package:abd_portfolio/responsive_widget.dart';
+
 import '../data/experience_list.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +9,7 @@ import '../../components/reusable_card.dart';
 
 class ExperienceInfo extends StatelessWidget {
   ExperienceInfo({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final List<Widget> experienceCards = List.generate(
@@ -22,12 +24,18 @@ class ExperienceInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var width = size.width;
+    var height = size.height;
+    var isSmallScreen = ResponsiveWidget.isSmallScreen(context);
     return ReusableCard(
       customColor: kInactiveCardColor,
-      cardChild: Padding(
+      cardChild: AnimatedPadding(
+        curve: Curves.linear,
+        duration: Duration(seconds: 1),
         padding: EdgeInsets.only(
-          top: MediaQuery.of(context).size.height * 0.05,
-          bottom: MediaQuery.of(context).size.height * 0.05,
+          top: isSmallScreen ? height * 0.025 : height * 0.05,
+          bottom: isSmallScreen ? height * 0.025 : height * 0.05,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,11 +49,14 @@ class ExperienceInfo extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: isSmallScreen ? height * 0.025 : height * 0.05,
             ),
-            Padding(
+            AnimatedPadding(
+              curve: Curves.linear,
+              duration: Duration(seconds: 1),
               padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.05),
+                horizontal: isSmallScreen ? width * 0.025 : width * 0.05,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,

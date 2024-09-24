@@ -6,7 +6,7 @@ class RoundIconButton extends StatelessWidget {
   final IconData icon;
   final Function onPressed;
 
-  RoundIconButton({@required this.icon, @required this.onPressed});
+  RoundIconButton({required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class RoundIconButton extends StatelessWidget {
             (ResponsiveWidget.isLargeScreen(context) ? 0.05 : 0.1),
       ),
       shape: CircleBorder(),
-      onPressed: onPressed,
+      onPressed: onPressed as void Function()?,
     );
   }
 }

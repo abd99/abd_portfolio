@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 import '../../components/reusable_card.dart';
+import '../../responsive_widget.dart';
 
 class SkillCategoryCard extends StatelessWidget {
   const SkillCategoryCard({
-    Key key,
-    @required this.categoryTitle,
-    @required this.cardsList,
+    Key? key,
+    required this.categoryTitle,
+    required this.cardsList,
   }) : super(key: key);
 
   final List<Widget> cardsList;
@@ -15,19 +16,24 @@ class SkillCategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    var size = MediaQuery.of(context).size;
+    var width = size.width;
+    var height = size.height;
+    var isSmallScreen = ResponsiveWidget.isSmallScreen(context);
+
+    return AnimatedPadding(
+      curve: Curves.linear,
+      duration: Duration(seconds: 1),
       padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.05),
+          horizontal: isSmallScreen ? width * 0.025 : width * 0.05),
       child: ReusableCard(
         customColor: kActiveCardColor,
         cardChild: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height * 0.025),
+            padding: EdgeInsets.symmetric(vertical: height * 0.025),
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.all(
-                      MediaQuery.of(context).size.height * 0.025),
+                  padding: EdgeInsets.all(height * 0.025),
                   child: Text(
                     categoryTitle,
                     style: kSecondaryTitleTextStyle,

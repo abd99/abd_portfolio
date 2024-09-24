@@ -7,9 +7,9 @@ class NavButton extends StatelessWidget {
   final Color color;
 
   const NavButton(
-      {Key key,
-      @required this.text,
-      @required this.onPressed,
+      {Key? key,
+      required this.text,
+      required this.onPressed,
       this.color = kButtonOutlineColor})
       : super(key: key);
 

@@ -8,7 +8,7 @@ import 'round_icon_button.dart';
 
 class ContactInfo extends StatelessWidget {
   ContactInfo({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final List<Widget> contactData = [

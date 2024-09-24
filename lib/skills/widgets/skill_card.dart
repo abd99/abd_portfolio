@@ -9,8 +9,8 @@ class SkillCard extends StatelessWidget {
   final IconData icon;
 
   const SkillCard({
-    @required this.label,
-    @required this.icon,
+    required this.label,
+    required this.icon,
   });
 
   @override

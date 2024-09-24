@@ -34,7 +34,7 @@ const List<Project> projectsList = [
       '- Rings an optional alarm on the dosage time.',
       '- Keeps a track of the user\'s dosage.',
     ],
-    year: '2018 - Present',
+    year: '2018 - 2018',
     techStack: 'Native Android(Java), SQLite',
   ),
   Project(

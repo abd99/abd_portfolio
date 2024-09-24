@@ -2,10 +2,10 @@
   "name": "abd_portfolio",
   "short_name": "abd_portfolio",
   "start_url": ".",
-  "display": "minimal-ui",
+  "display": "standalone",
   "background_color": "#0175C2",
   "theme_color": "#0175C2",
-  "description": "A new Flutter project.",
+  "description": "Abdullah Deshmukh - Portfolio",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
