@@ -6,7 +6,9 @@ const kButtonColor = Color(0xFFEB1555);
 const kButtonOutlineColor = Colors.white;
 
 const String kAboutText =
-    'Hey! I\'m a Computer Engineering undergrad student at Savitribai Phule Pune University. I mainly work with mobile technologies and have a couple of apps on the Play Store. I like to keep finding out new ways to enhance my design skills.\n\nApart from that I have interest in fitness and tech content consumption that maybe videos, articles or podcasts.';
+    '''Hi! I'm a Senior Software Engineer with over 7 years of experience in mobile technologies. I've developed and worked on a variety of apps, and some of my own apps are also available on the app stores. I had the opportunity to work with the Flutter team at Google, which gave me great insights into building high-quality mobile apps. Currently, I’m working at a tech company, focusing on cross-platform app development.
+
+I'm always exploring new ways to improve my skills, particularly in app design and user experience. Outside of work, I enjoy keeping up with the latest tech trends through videos, articles, and podcasts. I'm also passionate about fitness and staying active.''';
 
 const kTitleTextStyle = TextStyle(
   fontFamily: 'GoogleSansMedium',

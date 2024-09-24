@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
   final scrollDuration = Duration(milliseconds: 500);
 
   void scrollToKey(BuildContext context, GlobalKey key) {
-    RenderBox box = key.currentContext.findRenderObject();
+    RenderBox box = key.currentContext!.findRenderObject() as RenderBox;
     Offset position = box.localToGlobal(Offset.zero);
     var currentOffset = scrollController.offset;
     var destinationOffset = position.dy;
@@ -84,6 +84,7 @@ class ProfilePage extends StatelessWidget {
                 style: kLabelTextStyle.copyWith(
                   color: Colors.white,
                 ),
+                overflow: TextOverflow.ellipsis,
               ),
             )
           : null,

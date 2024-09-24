@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 import '../../components/reusable_card.dart';
+import '../../responsive_widget.dart';
 import 'skill_card.dart';
 import 'skill_category_card.dart';
 
 class SkillsInfo extends StatelessWidget {
   SkillsInfo({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final List<SkillCard> languageSkillCards = languagesMap.entries
@@ -35,12 +36,17 @@ class SkillsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var height = size.height;
+    var isSmallScreen = ResponsiveWidget.isSmallScreen(context);
     return ReusableCard(
       customColor: kInactiveCardColor,
-      cardChild: Padding(
+      cardChild: AnimatedPadding(
+        curve: Curves.linear,
+        duration: Duration(seconds: 1),
         padding: EdgeInsets.only(
-          top: MediaQuery.of(context).size.height * 0.05,
-          bottom: MediaQuery.of(context).size.height * 0.05,
+          top: isSmallScreen ? height * 0.025 : height * 0.05,
+          bottom: isSmallScreen ? height * 0.025 : height * 0.05,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +59,7 @@ class SkillsInfo extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: isSmallScreen ? height * 0.025 : height * 0.05,
             ),
             SkillCategoryCard(
               categoryTitle: 'Languages',

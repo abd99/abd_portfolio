@@ -7,7 +7,7 @@ class EducationCard extends StatelessWidget {
   final College college;
 
   const EducationCard({
-    @required this.college,
+    required this.college,
   });
 
   @override
@@ -32,11 +32,12 @@ class EducationCard extends StatelessWidget {
             style: kBodyTextStyle,
             textAlign: TextAlign.center,
           ),
-          Text(
-            college.year,
-            style: kLabelTextStyle,
-            textAlign: TextAlign.center,
-          ),
+          if (college.year != null)
+            Text(
+              college.year!,
+              style: kLabelTextStyle,
+              textAlign: TextAlign.center,
+            ),
         ],
       ),
     );

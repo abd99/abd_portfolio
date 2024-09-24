@@ -1,8 +1,8 @@
 import 'package:abd_portfolio/components/mouse_region_span.dart';
 import 'package:abd_portfolio/projects/models/project.dart';
+import 'package:abd_portfolio/responsive_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
@@ -11,19 +11,18 @@ class ProjectCard extends StatelessWidget {
   final Project project;
 
   const ProjectCard({
-    @required this.project,
+    required this.project,
   });
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.025),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.025),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).size.height * 0.025),
+          padding: EdgeInsets.symmetric(vertical: size.height * 0.025),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -53,6 +52,9 @@ class ProjectCard extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: ResponsiveWidget.isSmallScreen(context) ? 4.0 : 0.0,
                   ),
                   Flexible(
                     fit: FlexFit.tight,
@@ -89,10 +91,10 @@ class ProjectCard extends StatelessWidget {
                       text: TextSpan(
                         style: kBodyTextStyle,
                         children: List.generate(
-                          project.textWithLinks.textArray.length,
+                          project.textWithLinks!.textArray.length,
                           (index) {
                             var textItem =
-                                project.textWithLinks.textArray[index];
+                                project.textWithLinks!.textArray[index];
 
                             return MouseRegionSpan(
                               cursor: textItem.url != null
@@ -108,8 +110,8 @@ class ProjectCard extends StatelessWidget {
                                 recognizer: textItem.url != null
                                     ? (TapGestureRecognizer()
                                       ..onTap = () async {
-                                        if (await canLaunch(textItem.url)) {
-                                          await launch(textItem.url);
+                                        if (await canLaunch(textItem.url!)) {
+                                          await launch(textItem.url!);
                                         } else {
                                           throw 'Could not launch ${textItem.url}';
                                         }
