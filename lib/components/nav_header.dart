@@ -14,8 +14,9 @@ class NavHeader extends StatelessWidget {
       largeScreen: Stack(
         children: <Widget>[
           Visibility(
-            visible:
-                !Provider.of<ProfileImageVisibility>(context).isImageVisible,
+            visible: !Provider.of<ProfileImageVisibility>(
+              context,
+            ).isImageVisible,
             maintainAnimation: true,
             maintainState: true,
             child: Align(
@@ -24,10 +25,7 @@ class NavHeader extends StatelessWidget {
                 padding: EdgeInsets.only(left: 16.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(25.0),
-                  child: Image.asset(
-                    'images/abd_profile.jpeg',
-                    width: 50.0,
-                  ),
+                  child: Image.asset('images/abd_profile.jpg', width: 50.0),
                 ),
               ),
             ),
@@ -43,7 +41,7 @@ class NavHeader extends StatelessWidget {
                     )
                   : null,
             ),
-          )
+          ),
         ],
       ),
     );
