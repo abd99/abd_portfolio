@@ -8,9 +8,7 @@ import '../responsive_widget.dart';
 import 'reusable_card.dart';
 
 class ProfileInfo extends StatelessWidget {
-  ProfileInfo({
-    Key? key,
-  }) : super(key: key);
+  ProfileInfo({Key? key}) : super(key: key);
 
   profileImage(context) {
     var size = MediaQuery.of(context).size;
@@ -20,8 +18,10 @@ class ProfileInfo extends StatelessWidget {
     return VisibilityDetector(
       onVisibilityChanged: (info) {
         debugPrint("${info.visibleFraction} of my widget is visible");
-        var imageVisibility =
-            Provider.of<ProfileImageVisibility>(context, listen: false);
+        var imageVisibility = Provider.of<ProfileImageVisibility>(
+          context,
+          listen: false,
+        );
         if (info.visibleFraction <= 0) {
           imageVisibility.setVisibilityFalse();
         } else {
@@ -37,7 +37,7 @@ class ProfileInfo extends StatelessWidget {
           color: kButtonColor,
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: AssetImage("images/abd_profile.jpeg"),
+            image: AssetImage("images/abd_profile.jpg"),
             alignment: Alignment.center,
             fit: BoxFit.cover,
           ),
@@ -50,9 +50,7 @@ class ProfileInfo extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var width = size.width;
     return [
-      SizedBox(
-        height: size.height * 0.05,
-      ),
+      SizedBox(height: size.height * 0.05),
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 32.0),
         child: Text(
@@ -80,9 +78,7 @@ class ProfileInfo extends StatelessWidget {
       SizedBox(
         height: 20,
         width: 150,
-        child: Divider(
-          color: Theme.of(context).colorScheme.secondary,
-        ),
+        child: Divider(color: Theme.of(context).colorScheme.secondary),
       ),
       Container(
         width: ResponsiveWidget.isSmallScreen(context)
@@ -90,10 +86,7 @@ class ProfileInfo extends StatelessWidget {
             : width * 0.55,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text(
-            kAboutText,
-            style: kBodyTextStyle,
-          ),
+          child: Text(kAboutText, style: kBodyTextStyle),
         ),
       ),
     ];
@@ -110,16 +103,11 @@ class ProfileInfo extends StatelessWidget {
             cardChild: Column(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(
-                    top: 100.0,
-                    bottom: 100.0,
-                  ),
+                  padding: EdgeInsets.only(top: 100.0, bottom: 100.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.05,
-                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                       profileImage(context),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.025,
@@ -143,17 +131,13 @@ class ProfileInfo extends StatelessWidget {
             customColor: kInactiveCardColor,
             cardChild: Column(
               children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 profileImage(context),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: profileData(context),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.025,
-                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
               ],
             ),
           ),
