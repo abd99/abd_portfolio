@@ -6,7 +6,7 @@ const kButtonColor = Color(0xFFEB1555);
 const kButtonOutlineColor = Colors.white;
 
 const String kAboutText =
-    '''Hi! I'm a Senior Software Engineer with over 7 years of experience in mobile technologies. I've developed and worked on a variety of apps, and some of my own apps are also available on the app stores. I had the opportunity to work with the Flutter team at Google, which gave me great insights into building high-quality mobile apps. Currently, I’m working at a tech company, focusing on cross-platform app development.
+    '''Hi! I'm a Senior Software Engineer with 8+ years of experience in mobile technologies. Currently, I'm a founding engineer at Carv, where I help build the Flutter app powering an AI recruiter used by 250K+ B2B users. Previously, I collaborated with the Dart and Flutter teams at Google across multiple Google Summer of Code cycles, and shipped my own native Android apps with 50K+ downloads.
 
 I'm always exploring new ways to improve my skills, particularly in app design and user experience. Outside of work, I enjoy keeping up with the latest tech trends through videos, articles, and podcasts. I'm also passionate about fitness and staying active.''';
 
@@ -29,7 +29,4 @@ const kBodyTextStyle = TextStyle(
   letterSpacing: 0.5,
 );
 
-const kLabelTextStyle = TextStyle(
-  fontSize: 18.0,
-  color: Color(0xFF8D8E98),
-);
+const kLabelTextStyle = TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98));
