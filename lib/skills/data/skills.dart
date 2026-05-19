@@ -5,31 +5,36 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 const Map<String, IconData> languagesMap = {
   'Dart': FontAwesomeIcons.code,
   'Java': FontAwesomeIcons.java,
-  'Kotlin': MaterialCommunityIcons.language_kotlin,
   'JavaScript': FontAwesomeIcons.js,
-  'C/C++': MaterialCommunityIcons.language_cpp,
-  'HTML': FontAwesomeIcons.html5,
-  'CSS': FontAwesomeIcons.css3,
-  'XML': FontAwesomeIcons.code,
+  'Kotlin': MaterialCommunityIcons.language_kotlin,
+  'Swift': MaterialCommunityIcons.language_swift,
+  'Python': FontAwesomeIcons.python,
   'SQL': FontAwesomeIcons.database,
+  'NoSQL': FontAwesomeIcons.database,
+  'XML': FontAwesomeIcons.code,
+  'JSON': FontAwesomeIcons.fileCode,
+  'Scripting': FontAwesomeIcons.terminal,
 };
 
 const Map<String, IconData> technologiesMap = {
   'Flutter': FontAwesomeIcons.mobile,
   'Android': FontAwesomeIcons.android,
-  'React Native': FontAwesomeIcons.react,
-  'Cordova': MaterialCommunityIcons.cordova,
+  'iOS': FontAwesomeIcons.apple,
+  'NodeJS': FontAwesomeIcons.nodeJs,
 };
 
 const Map<String, IconData> dbMap = {
   'Firebase': MaterialCommunityIcons.firebase,
+  'SQLite': FontAwesomeIcons.database,
+  'Hive': FontAwesomeIcons.database,
   'MySQL': FontAwesomeIcons.database,
   'MongoDB': FontAwesomeIcons.database,
-  'Oracle': FontAwesomeIcons.database,
 };
 
 const Map<String, IconData> toolsMap = {
   'Git': FontAwesomeIcons.git,
   'GitHub': FontAwesomeIcons.github,
   'Firebase': MaterialCommunityIcons.firebase,
+  'CI/CD': FontAwesomeIcons.gears,
+  'Sentry': FontAwesomeIcons.bug,
 };
