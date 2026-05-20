@@ -82,21 +82,32 @@ class _ScreenshotLightboxDialogState extends State<ScreenshotLightboxDialog> {
             ),
             child: Stack(
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: SizedBox(
-                    width: size.width * 0.9,
-                    height: size.height * 0.8,
-                    child: InteractiveViewer(
-                      key: ValueKey<String>(url),
-                      minScale: 0.5,
-                      maxScale: 4.0,
-                      child: ProjectNetworkScreenshot(
-                        url: url,
-                        fit: BoxFit.contain,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 24.0),
+                    Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: SizedBox(
+                        width: size.width * 0.9,
+                        height: size.height * 0.8,
+                        child: InteractiveViewer(
+                          key: ValueKey<String>(url),
+                          minScale: 0.5,
+                          maxScale: 4.0,
+                          child: ProjectNetworkScreenshot(
+                            url: url,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Text(
+                      '${_currentIndex + 1} / ${widget.urls.length}',
+                      style: kLabelTextStyle,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
                 if (hasPrevious)
                   Positioned(
@@ -128,16 +139,6 @@ class _ScreenshotLightboxDialogState extends State<ScreenshotLightboxDialog> {
                   child: IconButton(
                     icon: Icon(Icons.close, color: Colors.white),
                     onPressed: () => Navigator.of(context).pop(),
-                  ),
-                ),
-                Positioned(
-                  bottom: 12.0,
-                  left: 0.0,
-                  right: 0.0,
-                  child: Text(
-                    '${_currentIndex + 1} / ${widget.urls.length}',
-                    style: kLabelTextStyle,
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
