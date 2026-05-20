@@ -6,13 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
+import 'project_screenshots.dart';
 
 class ProjectCard extends StatelessWidget {
   final Project project;
 
-  const ProjectCard({
-    required this.project,
-  });
+  const ProjectCard({required this.project});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class ProjectCard extends StatelessWidget {
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -67,27 +66,22 @@ class ProjectCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 16.0,
-              ),
+              SizedBox(height: 16.0),
               ...List.generate(
-                  project.description.length,
-                  (index) => Text(
-                        project.description[index],
-                        style: kBodyTextStyle,
-                        textAlign: TextAlign.start,
-                      )),
+                project.description.length,
+                (index) => Text(
+                  project.description[index],
+                  style: kBodyTextStyle,
+                  textAlign: TextAlign.start,
+                ),
+              ),
               if (project.textWithLinks != null)
                 Column(
                   children: [
-                    SizedBox(
-                      height: 16.0,
-                    ),
+                    SizedBox(height: 16.0),
                     RichText(
                       textAlign: TextAlign.start,
-                      strutStyle: StrutStyle(
-                        fontFamily: 'GoogleSansRegular',
-                      ),
+                      strutStyle: StrutStyle(fontFamily: 'GoogleSansRegular'),
                       text: TextSpan(
                         style: kBodyTextStyle,
                         children: List.generate(
@@ -109,13 +103,13 @@ class ProjectCard extends StatelessWidget {
                                 ),
                                 recognizer: textItem.url != null
                                     ? (TapGestureRecognizer()
-                                      ..onTap = () async {
-                                        if (await canLaunch(textItem.url!)) {
-                                          await launch(textItem.url!);
-                                        } else {
-                                          throw 'Could not launch ${textItem.url}';
-                                        }
-                                      })
+                                        ..onTap = () async {
+                                          if (await canLaunch(textItem.url!)) {
+                                            await launch(textItem.url!);
+                                          } else {
+                                            throw 'Could not launch ${textItem.url}';
+                                          }
+                                        })
                                     : null,
                               ),
                             );
@@ -137,9 +131,17 @@ class ProjectCard extends StatelessWidget {
                     ),
                   ],
                 ),
-              SizedBox(
-                height: 16.0,
-              ),
+              if (project.screenshotUrls != null &&
+                  project.screenshotUrls!.isNotEmpty)
+                Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    ProjectScreenshots(urls: project.screenshotUrls!),
+                  ],
+                ),
+              SizedBox(height: 16.0),
               RichText(
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
@@ -150,13 +152,10 @@ class ProjectCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    TextSpan(
-                      text: project.techStack,
-                      style: kBodyTextStyle,
-                    ),
+                    TextSpan(text: project.techStack, style: kBodyTextStyle),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -7,6 +7,7 @@ class Project {
   final String year;
   final String techStack;
   final TextWithLinks? textWithLinks;
+  final List<String>? screenshotUrls;
 
   const Project({
     required this.title,
@@ -15,5 +16,6 @@ class Project {
     required this.year,
     required this.techStack,
     this.textWithLinks,
+    this.screenshotUrls,
   });
 }

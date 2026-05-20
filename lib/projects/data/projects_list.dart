@@ -2,7 +2,35 @@ import 'package:abd_portfolio/models/custom_url.dart';
 
 import '../models/project.dart';
 
+const _chumviScreenshotBaseUrl =
+    'https://raw.githubusercontent.com/abd99/abd_portfolio/refs/heads/master/images/screenshots/chumvi/';
+
+const _chumviScreenshotUrls = [
+  '${_chumviScreenshotBaseUrl}screen2.png',
+  '${_chumviScreenshotBaseUrl}screen3.png',
+  '${_chumviScreenshotBaseUrl}screen4.png',
+  '${_chumviScreenshotBaseUrl}screen5.png',
+  '${_chumviScreenshotBaseUrl}screen6.png',
+  '${_chumviScreenshotBaseUrl}screen7.png',
+  '${_chumviScreenshotBaseUrl}screen8.png',
+  '${_chumviScreenshotBaseUrl}screen9.png',
+  '${_chumviScreenshotBaseUrl}screen10.png',
+];
+
 const List<Project> projectsList = [
+  Project(
+    title: 'Chumvi',
+    subTitle: 'Sodium & Meal Tracking App',
+    description: [
+      'Flutter app to manage daily salt intake by logging meals and tracking sodium over time.',
+      '- Home dashboard with sodium charts and meal breakdowns.',
+      '- Meal logging, history views, and educational articles on low-sodium substitutes.',
+      '- Onboarding flow and local persistence with SQLite.',
+    ],
+    year: '2021',
+    techStack: 'Flutter, Provider, SQLite, fl_chart, camera',
+    screenshotUrls: _chumviScreenshotUrls,
+  ),
   Project(
     title: 'YesPls Marketplace',
     subTitle: 'Shopping App for the Lao Region',
