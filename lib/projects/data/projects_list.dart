@@ -2,6 +2,21 @@ import 'package:abd_portfolio/models/custom_url.dart';
 
 import '../models/project.dart';
 
+const _carvScreenshotBaseUrl =
+    'https://raw.githubusercontent.com/abd99/abd_portfolio/refs/heads/master/images/screenshots/carv/';
+
+const _carvScreenshotUrls = [
+  '${_carvScreenshotBaseUrl}screen1.png',
+  '${_carvScreenshotBaseUrl}screen2.png',
+  '${_carvScreenshotBaseUrl}screen3.png',
+  '${_carvScreenshotBaseUrl}screen4.png',
+  '${_carvScreenshotBaseUrl}screen5.png',
+  '${_carvScreenshotBaseUrl}screen6.png',
+  '${_carvScreenshotBaseUrl}screen7.png',
+  '${_carvScreenshotBaseUrl}screen8.png',
+  '${_carvScreenshotBaseUrl}screen9.png',
+];
+
 const _chumviScreenshotBaseUrl =
     'https://raw.githubusercontent.com/abd99/abd_portfolio/refs/heads/master/images/screenshots/chumvi/';
 
@@ -18,6 +33,21 @@ const _chumviScreenshotUrls = [
 ];
 
 const List<Project> projectsList = [
+  Project(
+    title: 'Carv',
+    subTitle: 'AI Recruiting Platform',
+    description: [
+      'Founding-engineer work on Carv’s Flutter app for iOS, Android, and Web - an AI workmate that joins meetings, transcribes conversations, and helps recruiters move faster.',
+      '- Meeting library, playback, transcript search, and AI Workmate for summaries and follow-ups.',
+      '- Virtual and in-person capture with chunked uploads, Hive offline storage, and resumable recording.',
+      '- Candidate profiles, AI-generated outputs, and branded documents on Firebase.',
+      '- Led the Material 3 migration and a shared design system used across the product.',
+    ],
+    year: 'Dec 2022 - Present',
+    techStack:
+        'Flutter, Riverpod, Firebase, Material 3, go_router, Hive, TypeScript Cloud Functions',
+    screenshotUrls: _carvScreenshotUrls,
+  ),
   Project(
     title: 'Chumvi',
     subTitle: 'Sodium & Meal Tracking App',
