@@ -1,0 +1,3 @@
+# Configuration for https://pub.dev/packages/peanut
+# Project site: https://abd99.github.io/abd_portfolio/
+extra-args: "--no-tree-shake-icons --base-href=/abd_portfolio/"
