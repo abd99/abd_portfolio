@@ -9,25 +9,26 @@ import '../models/experience.dart';
 class ExperienceCard extends StatelessWidget {
   final Experience experience;
 
-  const ExperienceCard({
-    required this.experience,
-  });
+  const ExperienceCard({required this.experience});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.025),
+        horizontal: MediaQuery.of(context).size.width * 0.025,
+      ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Padding(
           padding: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).size.height * 0.025),
+            vertical: MediaQuery.of(context).size.height * 0.025,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Flexible(
                     fit: FlexFit.tight,
@@ -48,7 +49,7 @@ class ExperienceCard extends StatelessWidget {
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -64,9 +65,7 @@ class ExperienceCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 16.0,
-              ),
+              SizedBox(height: 16.0),
               ...List<Padding>.generate(
                 experience.description.length,
                 (index) => Padding(
@@ -92,9 +91,7 @@ class ExperienceCard extends StatelessWidget {
               if (experience.textWithLinks != null)
                 Column(
                   children: [
-                    SizedBox(
-                      height: 8.0,
-                    ),
+                    SizedBox(height: 8.0),
                     ...List.generate(
                       experience.textWithLinks!.textArray.length,
                       (index) => RichText(
@@ -117,13 +114,15 @@ class ExperienceCard extends StatelessWidget {
                                       : null,
                                   recognizer: textItem.url != null
                                       ? (TapGestureRecognizer()
-                                        ..onTap = () async {
-                                          if (await canLaunch(textItem.url!)) {
-                                            await launch(textItem.url!);
-                                          } else {
-                                            throw 'Could not launch ${textItem.url}';
-                                          }
-                                        })
+                                          ..onTap = () async {
+                                            if (await canLaunch(
+                                              textItem.url!,
+                                            )) {
+                                              await launch(textItem.url!);
+                                            } else {
+                                              throw 'Could not launch ${textItem.url}';
+                                            }
+                                          })
                                       : null,
                                 ),
                               );

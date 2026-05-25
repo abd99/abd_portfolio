@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
           secondary: Color(0xFF8D8E98),
           brightness: Brightness.dark,
         ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF0A0E21),
+          surfaceTintColor: Colors.transparent,
+        ),
       ),
       home: ChangeNotifierProvider<ProfileImageVisibility>(
         create: (context) => ProfileImageVisibility(),
