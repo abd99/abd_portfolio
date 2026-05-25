@@ -32,6 +32,17 @@ const _chumviScreenshotUrls = [
   '${_chumviScreenshotBaseUrl}screen10.png',
 ];
 
+const _polsambolaScreenshotBaseUrl =
+    'https://raw.githubusercontent.com/abd99/abd_portfolio/refs/heads/master/images/screenshots/polsambola/';
+
+const _polsambolaScreenshotUrls = [
+  '${_polsambolaScreenshotBaseUrl}banner.png',
+  '${_polsambolaScreenshotBaseUrl}screen1.png',
+  '${_polsambolaScreenshotBaseUrl}screen2.png',
+  '${_polsambolaScreenshotBaseUrl}screen3.png',
+  '${_polsambolaScreenshotBaseUrl}screen4.png',
+];
+
 const List<Project> projectsList = [
   Project(
     title: 'Carv',
@@ -60,6 +71,20 @@ const List<Project> projectsList = [
     year: '2021',
     techStack: 'Flutter, Provider, SQLite, fl_chart, camera',
     screenshotUrls: _chumviScreenshotUrls,
+  ),
+  Project(
+    title: 'Polsambola',
+    subTitle: '2-Tap Food Ordering App',
+    description: [
+      'A Flutter app through which you can order food to your doorstep in 2 taps!',
+      '- Built the ordering flow with portion selection, delivery pricing, ETA, and confirmation.',
+      '- Added Firebase phone auth, new/returning user handling, nickname capture, and FCM token sync.',
+      '- Integrated Google Maps address selection, Azure Functions APIs, push notifications, and haptics.',
+    ],
+    year: '2021',
+    techStack:
+        'Flutter, Provider, Firebase Auth, Firebase Messaging, Google Maps, Azure Functions',
+    screenshotUrls: _polsambolaScreenshotUrls,
   ),
   Project(
     title: 'YesPls Marketplace',
